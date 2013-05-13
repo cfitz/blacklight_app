@@ -16,7 +16,6 @@ pid '/var/www/192.81.213.165/shared/pids/unicorn.pid'
 listen "/var/www/192.81.213.165/tmp/sockets/192.81.213.165.sock", :backlog => 2048
 
 stderr_path '/var/www/192.81.213.165/shared/log/unicorn.log'
-stdout_path '/var/www/192.81.213.165/shared/log/unicorn.log'
 
 before_exec do |server|
   ENV["BUNDLE_GEMFILE"] = "/var/www/192.81.213.165/current/Gemfile"

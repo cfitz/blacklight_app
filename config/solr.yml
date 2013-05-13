@@ -10,6 +10,8 @@
 # jetty_path is only required for rake tasks that need to know
 # how to start up solr, generally for automated testing. 
 
+production:
+  url: http://127.0.0.1:8080/solr/blacklight-core
 development:
   url: http://127.0.0.1:8983/solr
 test: &test

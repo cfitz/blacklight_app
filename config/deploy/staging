@@ -1,0 +1,4 @@
+set :server_ip, "catalog-dev.wmu.se"
+server server_ip, :app, :web, :primary => true
+set :rails_env, 'production'
+set :branch, 'master'

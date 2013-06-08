@@ -9,16 +9,18 @@ preload_app true
 # Restart any workers that haven't responded in 30 seconds
 timeout 30
 
-working_directory '/var/www/192.81.213.165/current'
+# Using Chef, we set up a deploy to path which is where our application code will live. 
+# The syntax  I use is /var/www/APPLICATION_NAME. 
+working_directory '/var/www/catalog-dev.wmu.se/current'
 
 # Listen on a Unix data socket
-pid '/var/www/192.81.213.165/shared/pids/unicorn.pid'
-listen "/var/www/192.81.213.165/tmp/sockets/192.81.213.165.sock", :backlog => 2048
+pid '/var/www/catalog-dev.wmu.se/shared/pids/unicorn.pid'
+listen "/var/www/catalog-dev.wmu.se/tmp/sockets/catalog-dev.wmu.se.sock", :backlog => 2048
 
-stderr_path '/var/www/192.81.213.165/shared/log/unicorn.log'
+stderr_path '/var/www/catalog-dev.wmu.se/shared/log/unicorn.log'
 
 before_exec do |server|
-  ENV["BUNDLE_GEMFILE"] = "/var/www/192.81.213.165/current/Gemfile"
+  ENV["BUNDLE_GEMFILE"] = "/var/www/catalog-dev.wmu.se/current/Gemfile"
 end
 
 before_fork do |server, worker|
@@ -33,7 +35,7 @@ before_fork do |server, worker|
   #
   # Using this method we get 0 downtime deploys.
 
-  old_pid = '/var/www/192.81.213.165/shared/pids/unicorn.pid.oldbin'
+  old_pid = '/var/www/catalog-dev.wmu.se/shared/pids/unicorn.pid.oldbin'
 
   if File.exists?(old_pid) && server.pid != old_pid
     begin
